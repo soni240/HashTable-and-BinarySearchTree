@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UC2_frequency_paragraph
+
+namespace UC3_Remove_Word
 {
     internal class MapNode
     {
@@ -17,7 +17,6 @@ namespace UC2_frequency_paragraph
             public V Value { get; set; }
         };
 
-      
         public class MapNode<K, V>
         {
             int size;
@@ -29,9 +28,7 @@ namespace UC2_frequency_paragraph
                 this.items = new LinkedList<KeyValue<K, V>>[size];
             }
 
-            public MapNode()
-            {
-            }
+
 
             public void Add(K key, V value)
             {
@@ -91,6 +88,26 @@ namespace UC2_frequency_paragraph
                 }
 
             }
+            public void Remove(K key)
+            {
+                int position = GetArrayPosition(key);
+                LinkedList<KeyValue<K, V>> linkedList = GetLinkedListPosition(position);
+                bool itemFound = false;
+                KeyValue<K, V> founditem = default(KeyValue<K, V>);
+                foreach (KeyValue<K, V> keyValue in linkedList)
+                {
+                    if (keyValue.Key.Equals(key))
+                    {
+                        itemFound = true;
+                        founditem = keyValue;
+                    }
+                }
+                if (itemFound)
+                {
+                    linkedList.Remove(founditem);
+
+                }
+            }
             //Display Linkedlist elements for particular key
             public void Display(K key)
             {
@@ -106,12 +123,8 @@ namespace UC2_frequency_paragraph
                 }
             }
 
-            private string GetDebuggerDisplay()
-            {
-                return ToString();
-            }
         }
     }
-
 }
+    
 
