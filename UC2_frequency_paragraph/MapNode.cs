@@ -1,23 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UC1_frequency_word
+namespace UC2_frequency_paragraph
 {
-    internal partial class MapNode
+    internal class MapNode
     {
+        //Value type Data type KeyValue
+        //Value type Data Type KeyValue
+        public struct KeyValue<K, V>
+        {
+            public K Key { get; set; }
+            public V Value { get; set; }
+        };
 
+      
         public class MapNode<K, V>
         {
             int size;
             public LinkedList<KeyValue<K, V>>[] items;
+
             public MapNode(int size)
             {
                 this.size = size;
                 this.items = new LinkedList<KeyValue<K, V>>[size];
+            }
 
+            public MapNode()
+            {
             }
 
             public void Add(K key, V value)
@@ -92,10 +105,13 @@ namespace UC1_frequency_word
 
                 }
             }
+
+            private string GetDebuggerDisplay()
+            {
+                return ToString();
+            }
         }
     }
+
 }
-
-
-
 
