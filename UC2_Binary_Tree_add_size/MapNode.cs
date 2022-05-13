@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UC1_Adding_BST
+namespace UC2_Binary_Tree_add_size
 {
     internal class MapNode
     {
@@ -35,6 +35,7 @@ namespace UC1_Adding_BST
                     else
                     {
                         this.leftTree.Insert(item);
+                        leftCount++;
                     }
                 }
                 else
@@ -46,8 +47,13 @@ namespace UC1_Adding_BST
                     else
                     {
                         this.rightTree.Insert(item);
+                        rightCount++;
                     }
                 }
+            }
+            public void GetSize()
+            {
+                Console.WriteLine("Size " + " " + (1 + this.leftCount + this.rightCount));
             }
 
             public void Display()
